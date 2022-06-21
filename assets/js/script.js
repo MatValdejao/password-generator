@@ -8,12 +8,17 @@ var theNumbers = "0123456789"
 function passwordSpecifications() {
     //prompt user for number of characters and turn variable into type Number
     var length = prompt("How many characters will your password contain?");
+    length = parseInt(length);
+
     //checks whether length chosen is within 8-128 characters long
-    if (parseInt(length) < 8 || length === "") {
+    if (length < 8) {
         alert("Your password is too short! It must be at least 8 characters long!");
         passwordSpecifications();
     } else if (parseInt(length) > 128) {
         alert("Your password is too long! It cannot exceed 128 characters!");
+        passwordSpecifications();
+    } else if (Number.isNaN(length)) {
+        alert("You must choose a numeric value for your password length!");
         passwordSpecifications();
     }
 
