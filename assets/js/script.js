@@ -45,7 +45,27 @@ function generatePassword() {
         numeric: values[3],
         special: values[4]  
     }
-    console.log(passwordIdentifiers);
+    //utilizes chosen size to determine for loop length
+    generatedPassword = ""
+    for (var i = 0; i < passwordIdentifiers.size; i++) {
+        generatedCharacter = ""; 
+        //integrates a character into a character generator variable
+        if (passwordIdentifiers.uppercase) {
+            generatedCharacter += getUppercase();
+        }
+        if (passwordIdentifiers.lowercase) {
+            generatedCharacter += getLowercase();
+        }
+        if (passwordIdentifiers.special) {
+            generatedCharacter += getSpecial();
+        }
+        if (passwordIdentifiers.numeric) {
+            generatedCharacter += getNumeric();
+        }
+        //chooses one of the generated characters at random and adds it to final password
+        generatedPassword += generatedCharacter[Math.floor(Math.random()*generatedCharacter.length)];
+    }
+    return generatedPassword;
 }
 
 //Series of functions that randomly choose one of the characters in each of the corresponding string variables
