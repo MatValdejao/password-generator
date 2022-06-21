@@ -33,7 +33,15 @@ function passwordSpecifications() {
     return [length, chooseLowercase, chooseUppercase, chooseNumeric, chooseSpecial];
 }
 
+//create generate password function
+function generatePassword() {
+    //calls password specifications and creates object with user specifications
+    var values = passwordSpecifications();
 
+   
+
+    console.log(values);
+}
 
 //Series of functions that randomly choose one of the characters in each of the corresponding string variables
 function getUppercase() {
@@ -60,4 +68,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", passwordSpecifications);
+generateBtn.addEventListener("click", generatePassword);
