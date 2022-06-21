@@ -38,9 +38,14 @@ function generatePassword() {
     //calls password specifications and creates object with user specifications
     var values = passwordSpecifications();
 
-   
-
-    console.log(values);
+    var passwordIdentifiers = {
+        size: values[0],
+        uppercase: values[2],
+        lowercase: values[1],
+        numeric: values[3],
+        special: values[4]  
+    }
+    console.log(passwordIdentifiers);
 }
 
 //Series of functions that randomly choose one of the characters in each of the corresponding string variables
