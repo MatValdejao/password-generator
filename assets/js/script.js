@@ -18,7 +18,7 @@ function passwordSpecifications() {
     }
 
     //check what type of characters to use and save into boolean type variables using confirm
-    var chooseLowercase = confirm("Would you like to have lowercase characters?");
+    var chooseLowercase = confirm("Would you like to use lowercase characters?");
     var chooseUppercase = confirm("Would you like to use uppercase characters?");
     var chooseNumeric = confirm("Would you like to use numeric characters?");
     var chooseSpecial = confirm("Would you like to use special characters?");
