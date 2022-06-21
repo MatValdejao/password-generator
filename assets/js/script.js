@@ -53,7 +53,6 @@ function generatePassword() {
         numeric: values[3],
         special: values[4],
     }
-    console.log(passwordIdentifiers)
 
     //utilizes chosen size to determine for loop length
     generatedPassword = ""
@@ -75,7 +74,6 @@ function generatePassword() {
         //chooses one of the generated characters at random and adds it to final password
         generatedPassword += generatedCharacter[Math.floor(Math.random()*generatedCharacter.length)];
     }
-    console.log(generatedPassword)
     return generatedPassword;
 }
 
