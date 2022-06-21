@@ -11,17 +11,19 @@ function passwordSpecifications() {
     length = parseInt(length);
 
     //checks whether length chosen is within 8-128 characters long
+    if (Number.isNaN(length)) {
+        alert("You must choose a numeric value for your password length!");
+        return passwordSpecifications();
+    }
     if (length < 8) {
         alert("Your password is too short! It must be at least 8 characters long!");
-        passwordSpecifications();
-    } else if (parseInt(length) > 128) {
+        return passwordSpecifications();
+    } 
+    if (length > 128) {
         alert("Your password is too long! It cannot exceed 128 characters!");
-        passwordSpecifications();
-    } else if (Number.isNaN(length)) {
-        alert("You must choose a numeric value for your password length!");
-        passwordSpecifications();
-    }
-
+        return passwordSpecifications();
+    } 
+    
     //check what type of characters to use and save into boolean type variables using confirm
     var chooseLowercase = confirm("Would you like to use lowercase characters?");
     var chooseUppercase = confirm("Would you like to use uppercase characters?");
@@ -31,7 +33,7 @@ function passwordSpecifications() {
     //checks whether at least one prompt boolean value is true
     if (!chooseLowercase && !chooseUppercase && !chooseNumeric && !chooseSpecial) {
         alert("You must choose at least one type of character!");
-        passwordSpecifications();
+        return passwordSpecifications();
     }
 
     //returns the chosen length, and users choices of character types as booleans
@@ -40,6 +42,7 @@ function passwordSpecifications() {
 
 //create generate password function
 function generatePassword() {
+
     //calls password specifications and creates object with user specifications
     var values = passwordSpecifications();
 
@@ -48,8 +51,10 @@ function generatePassword() {
         uppercase: values[2],
         lowercase: values[1],
         numeric: values[3],
-        special: values[4]  
+        special: values[4],
     }
+    console.log(passwordIdentifiers)
+
     //utilizes chosen size to determine for loop length
     generatedPassword = ""
     for (var i = 0; i < passwordIdentifiers.size; i++) {
@@ -70,6 +75,7 @@ function generatePassword() {
         //chooses one of the generated characters at random and adds it to final password
         generatedPassword += generatedCharacter[Math.floor(Math.random()*generatedCharacter.length)];
     }
+    console.log(generatedPassword)
     return generatedPassword;
 }
 
@@ -92,9 +98,9 @@ function getSpecial() {
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
 }
 
 // Add event listener to generate button
