@@ -71,7 +71,6 @@ function generatePassword() {
         special: values[4],
         thePassword: values[5]
     }
-    console.log(passwordIdentifiers.thePassword);
 
     //utilizes chosen size to determine for loop length
     generatedPassword = passwordIdentifiers.thePassword;
