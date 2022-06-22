@@ -24,11 +24,28 @@ function passwordSpecifications() {
         return passwordSpecifications();
     } 
     
+    generatedPassword = "";
     //check what type of characters to use and save into boolean type variables using confirm
     var chooseLowercase = confirm("Would you like to use lowercase characters?");
+    if (chooseLowercase) {
+        generatedPassword += getLowercase();
+        length -= 1;
+    }
     var chooseUppercase = confirm("Would you like to use uppercase characters?");
+    if (chooseUppercase) {
+        generatedPassword += getUppercase();
+        length -= 1;
+    }
     var chooseNumeric = confirm("Would you like to use numeric characters?");
+    if (chooseNumeric) {
+        generatedPassword += getNumeric();
+        length -= 1;
+    }
     var chooseSpecial = confirm("Would you like to use special characters?");
+    if (chooseSpecial) {
+        generatedPassword += getSpecial();
+        length -= 1;
+    }
 
     //checks whether at least one prompt boolean value is true
     if (!chooseLowercase && !chooseUppercase && !chooseNumeric && !chooseSpecial) {
@@ -37,7 +54,7 @@ function passwordSpecifications() {
     }
 
     //returns the chosen length, and users choices of character types as booleans
-    return [length, chooseLowercase, chooseUppercase, chooseNumeric, chooseSpecial];
+    return [length, chooseLowercase, chooseUppercase, chooseNumeric, chooseSpecial, generatedPassword];
 }
 
 //create generate password function
@@ -52,10 +69,12 @@ function generatePassword() {
         lowercase: values[1],
         numeric: values[3],
         special: values[4],
+        thePassword: values[5]
     }
+    console.log(passwordIdentifiers.thePassword);
 
     //utilizes chosen size to determine for loop length
-    generatedPassword = ""
+    generatedPassword = passwordIdentifiers.thePassword;
     for (var i = 0; i < passwordIdentifiers.size; i++) {
         generatedCharacter = ""; 
         //integrates a character into a character generator variable
